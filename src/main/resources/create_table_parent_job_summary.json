@@ -1,0 +1,15 @@
+{
+    "TableName": "kda_flink_perf_benchmarking_parent_job_summary",
+    "KeySchema": [
+      { "AttributeName": "job_name", "KeyType": "HASH" },
+      { "AttributeName": "job_id", "KeyType": "RANGE" }
+    ],
+    "AttributeDefinitions": [
+      { "AttributeName": "job_name", "AttributeType": "S" },
+      { "AttributeName": "job_id", "AttributeType": "S" }
+    ],
+    "ProvisionedThroughput": {
+      "ReadCapacityUnits": 5,
+      "WriteCapacityUnits": 5
+    }
+}

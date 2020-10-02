@@ -1,0 +1,15 @@
+{
+    "TableName": "kda_flink_benchmarking_kinesis_stream",
+    "KeySchema": [
+      { "AttributeName": "job_name", "KeyType": "HASH" },
+      { "AttributeName": "job_run_id", "KeyType": "RANGE" }
+    ],
+    "AttributeDefinitions": [
+      { "AttributeName": "job_name", "AttributeType": "S" },
+      { "AttributeName": "job_run_id", "AttributeType": "S" }
+    ],
+    "ProvisionedThroughput": {
+      "ReadCapacityUnits": 5,
+      "WriteCapacityUnits": 5
+    }
+}
