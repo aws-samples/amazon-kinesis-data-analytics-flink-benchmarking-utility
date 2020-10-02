@@ -3,6 +3,11 @@
 
 package com.amazonaws.kda.flink.benchmarking.model;
 
+/**
+ * 
+ * @author Ravi Itha, Amazon Web Services, Inc.
+ *
+ */
 public class ChildJob {
 	
 	private String jobName;

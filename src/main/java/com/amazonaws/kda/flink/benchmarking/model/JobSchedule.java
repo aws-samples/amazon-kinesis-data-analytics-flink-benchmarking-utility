@@ -6,6 +6,11 @@ package com.amazonaws.kda.flink.benchmarking.model;
 import org.quartz.JobDetail;
 import org.quartz.Trigger;
 
+/**
+ * 
+ * @author Ravi Itha, Amazon Web Services, Inc.
+ *
+ */
 public class JobSchedule {
 	
 	private JobDetail jobDetail;

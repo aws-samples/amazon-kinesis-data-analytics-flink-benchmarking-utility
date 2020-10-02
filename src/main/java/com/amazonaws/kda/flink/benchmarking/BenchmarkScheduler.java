@@ -41,13 +41,14 @@ import com.amazonaws.services.kinesis.AmazonKinesisClientBuilder;
 import com.amazonaws.util.IOUtils;
 import com.google.gson.Gson;
 
+/**
+ * Benchmarking Utility main program
+ * 
+ * @author Ravi Itha, Amazon Web Services, Inc.
+ *
+ */
 public class BenchmarkScheduler {
 
-	/**
-	 * This is the entry point of the Benchmarking Utility
-	 * 
-	 * @param args
-	 */
 	public static void main(String[] args) {
 
 		Logger logger = LoggerFactory.getLogger(BenchmarkScheduler.class);

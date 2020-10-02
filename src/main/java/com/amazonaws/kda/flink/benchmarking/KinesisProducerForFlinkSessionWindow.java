@@ -29,6 +29,11 @@ import com.amazonaws.services.kinesis.AmazonKinesis;
 import com.amazonaws.services.kinesis.AmazonKinesisClientBuilder;
 import com.google.common.collect.Iterables;
 
+/**
+ * 
+ * @author Ravi Itha, Amazon Web Services, Inc.
+ *
+ */
 @PersistJobDataAfterExecution
 public class KinesisProducerForFlinkSessionWindow implements Job {
 

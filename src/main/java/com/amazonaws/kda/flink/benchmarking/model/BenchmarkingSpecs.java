@@ -5,6 +5,11 @@ package com.amazonaws.kda.flink.benchmarking.model;
 
 import java.util.List;
 
+/**
+ * 
+ * @author Ravi Itha, Amazon Web Services, Inc.
+ *
+ */
 public class BenchmarkingSpecs {
 	
 	private String jobName;
