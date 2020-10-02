@@ -325,7 +325,7 @@ Using DynamoDB web service instead of DynamoDB Local is easy. Follow the below i
 
     ```bash
     aws dynamodb create-table \
-    --cli-input-json file://create_table_per_stream_tracking.json \
+    --cli-input-json file://create_table_kinesis_stream.json \
     --region us-east-1
     ```
 
