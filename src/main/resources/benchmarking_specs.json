@@ -1,5 +1,5 @@
 {
-	"jobName": "kda_flink_benchmarking-data-producer",
+	"jobName": "amazon_kda_flink_benchmarking_utility",
 	"jobDurationInMinutes": 65,
 	"region": "us-east-1",
 	"targetKinesisStreams": [
