@@ -352,4 +352,4 @@ Using DynamoDB web service instead of DynamoDB Local is easy. Follow the below i
 
 ## License Summary
 
-This sample code is made available under the MIT license. See the LICENSE file.
+This sample code is made available under the MIT-0 license. See the LICENSE file.
