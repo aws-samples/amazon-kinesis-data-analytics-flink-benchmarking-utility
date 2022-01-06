@@ -20,7 +20,7 @@ public class BenchmarkingSpecs {
 	private int numberofChildJobs;
 	private boolean isUsingDynamoDBLocal;
 	private String dynamoDBLocalURI;
-	private String parentJobSummmaryDDBTableName;
+	private String parentJobSummaryDDBTableName;
 	private String childJobSummaryDDBTableName;
 	private List<ChildJob> childJobs;
 	private List<String> targetKinesisStreams;
@@ -73,11 +73,11 @@ public class BenchmarkingSpecs {
 	public void setDynamoDBLocalURI(String dynamoDBLocalURI) {
 		this.dynamoDBLocalURI = dynamoDBLocalURI;
 	}
-	public String getParentJobSummmaryDDBTableName() {
-		return parentJobSummmaryDDBTableName;
+	public String getParentJobSummaryDDBTableName() {
+		return parentJobSummaryDDBTableName;
 	}
-	public void setParentJobSummmaryDDBTableName(String parentJobSummmaryDDBTableName) {
-		this.parentJobSummmaryDDBTableName = parentJobSummmaryDDBTableName;
+	public void setParentJobSummaryDDBTableName(String parentJobSummaryDDBTableName) {
+		this.parentJobSummaryDDBTableName = parentJobSummaryDDBTableName;
 	}
 	public String getChildJobSummaryDDBTableName() {
 		return childJobSummaryDDBTableName;

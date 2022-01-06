@@ -83,7 +83,7 @@ The below Table will help you define the specifications:
 | ```targetKinesisStreams``` | Array | Names of target Kinesis Streams. This utility writes sample data to one or more configured streams. |
 | ```isUsingDynamoDBLocal``` | boolean | When DynamoDB Local is used for status tracking this attribute is set to ```true```. When it is set to ```false```, it will use Amazon DynamoDB web service. |
 | ```dynamoDBLocalURI``` | String | The URI for DynamoDB Local |
-| ```parentJobSummmaryDDBTableName``` | String | The name of the DynamoDB Table for Parent Job Summary |
+| ```parentJobSummaryDDBTableName``` | String | The name of the DynamoDB Table for Parent Job Summary |
 | ```childJobSummaryDDBTableName``` | String | The name of the DynamoDB Table for Child Job Summary |
 | ```childJobs``` | Array |  The list of Child Jobs to run part of the utility|
 
@@ -207,10 +207,18 @@ The below Table will help you define the specifications:
 
 - - -
 
-### Deploy Kinesis Data Generator App
+### Configure the Kinesis Data Generator App 
 
 1. Come back to your MacBook or Laptop
-1. Copy Kinesis Data Generator binaries to to EC2 instance. **Note:** Steps below are relevant for SCP (secure copy) tool on MacBook.
+1. In ```src/main/resources/benchmarking_specs.json``` update the ```targetKinesisStreams``` array to the kinesis stream(s) that you want data written to and ```region``` to the region the stream(s) exist in
+1. In ```src/main/resources/create_table_kinesis_stream.json``` update ```TableName``` to match the kinesis stream you want data written to
+1. If you have more than 1 stream to write to then duplicate ```src/main/resources/create_table_kinesis_stream.json``` for each stream changing  ```TableName``` in each file accordingly.
+
+- - -
+
+### Deploy Kinesis Data Generator App
+
+1. Copy Kinesis Data Generator binaries to the EC2 instance. **Note:** Steps below are relevant for SCP (secure copy) tool on MacBook.
 
    1. Copy the jar file to EC2 instance
 
@@ -234,14 +242,16 @@ The below Table will help you define the specifications:
         scp -i my_ec2_keypair.pem <path_to_your_ide_workspace>/Amazon-kda-flink-benchmarking-utility/src/main/resources/create_table_parent_job_summary.json ec2-user@IP_Address:/home/ec2-user/kda-flink-benchmarking-utility/
         ```
 
+    1. Copy DynamoDB Table JSON files for Kinesis Streams to EC2 instance
         ```bash
-        scp -i my_ec2_keypair.pem <path_to_your_ide_workspace>/Amazon-kda-flink-benchmarking-utility/src/main/resources/create_table_per_stream_tracking.json ec2-user@IP_Address:/home/ec2-user/kda-flink-benchmarking-utility/
+        scp -i my_ec2_keypair.pem <path_to_your_ide_workspace>/Amazon-kda-flink-benchmarking-utility/src/main/resources/create_table_kinesis_stream.json ec2-user@IP_Address:/home/ec2-user/kda-flink-benchmarking-utility/
         ```
+        (Repeat for all duplicates created if you're  writing to multiple streams)
 
    1. Copy the Bash script to EC2 instance
 
         ```bash
-        scp -i my_ec2_keypair.pem <path_to_your_ide_workspace>/Amazon-kda-flink-benchmarking-utility/src/main/resources/./run_kinesis_data_generator.sh ec2-user@IP_Address:/home/ec2-user/kda-flink-benchmarking-utility/
+        scp -i my_ec2_keypair.pem <path_to_your_ide_workspace>/Amazon-kda-flink-benchmarking-utility/src/main/resources/amazon-kda-flink-benchmarking-utility.sh ec2-user@IP_Address:/home/ec2-user/kda-flink-benchmarking-utility/
         ```
 
    1. **Note:** To use PuTTY, refer [Connecting to Your Linux Instance from Windows Using PuTTY](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/putty.html)
@@ -251,13 +261,6 @@ The below Table will help you define the specifications:
 ### Create Tables in DynamoDB Local
 
 1. From the EC2 instance and while in folder **kda-flink-benchmarking-utility**, run the below command to create DynamoDB tables
-
-    ```bash
-    aws dynamodb create-table \
-    --cli-input-json file://create_table_kinesis_stream.json \
-    --region us-east-1 \
-    --endpoint-url http://localhost:8000
-    ```
 
     ```bash
     aws dynamodb create-table \
@@ -273,6 +276,14 @@ The below Table will help you define the specifications:
     --endpoint-url http://localhost:8000
     ```
 
+    ```bash
+    aws dynamodb create-table \
+    --cli-input-json file://create_table_kinesis_stream.json \
+    --region us-east-1 \
+    --endpoint-url http://localhost:8000
+    ```
+    (Repeat for all files if you're writing to multiple streams)
+
 1. Check the tables by running the below command
 
     ```bash
@@ -286,7 +297,7 @@ The below Table will help you define the specifications:
     "TableNames": [
         "kda_flink_benchmarking_child_job_summary",
         "kda_flink_benchmarking_parent_job_summary",
-        "kda_flink_benchmarking_kinesis_stream"
+        "<kinesis-stream(s)>"
         ]
     }
     ```
@@ -311,6 +322,8 @@ The below Table will help you define the specifications:
 1. Enter the following line
 
     ```30 * * * * /bin/bash /home/ec2-user/kda-flink-benchmarking-utility/amazon-kda-flink-benchmarking-utility.sh```
+    This will run the data-generator as a cron-job every hour at 30 minutes past the hour.
+    Once the job starts for the first time you should see incoming data on your kinesis stream(s)
 
 - - -
 

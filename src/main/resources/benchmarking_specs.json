@@ -7,8 +7,8 @@
 	],
 	"isUsingDynamoDBLocal": true,
 	"dynamoDBLocalURI": "http://localhost:8000",
-	"parentJobSummmaryDDBTableName": "kda_flink_benchmarking_parent_job_summary",
-	"childJobSummmaryDDBTableName": "kda_flink_benchmarking_child_job_summary",
+	"parentJobSummaryDDBTableName": "kda_flink_benchmarking_parent_job_summary",
+	"childJobSummaryDDBTableName": "kda_flink_benchmarking_child_job_summary",
 	"childJobs": [
 		{
 			"jobName": "60_Min",
