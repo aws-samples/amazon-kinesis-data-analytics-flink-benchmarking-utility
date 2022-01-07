@@ -1,5 +1,5 @@
 {
-    "TableName": "kda_flink_perf_benchmarking_child_job_summary",
+    "TableName": "kda_flink_benchmarking_child_job_summary",
     "KeySchema": [
       { "AttributeName": "job_name", "KeyType": "HASH" },
       { "AttributeName": "job_id", "KeyType": "RANGE" }

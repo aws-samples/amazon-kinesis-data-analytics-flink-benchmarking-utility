@@ -169,7 +169,7 @@ public class BenchmarkScheduler {
 		for (ChildJob childJob : benchMarkingSpecs.getChildJobs()) {
 			numInteractionsProcessed += childJob.getNumberofInteractions();
 		}
-		DDBUtil.insertParentJobStatus(dynamoDBClient, benchMarkingSpecs.getParentJobSummmaryDDBTableName(),
+		DDBUtil.insertParentJobStatus(dynamoDBClient, benchMarkingSpecs.getParentJobSummaryDDBTableName(),
 				benchMarkingSpecs.getJobName(), benchMarkingSpecs.getJobId(), numInteractionsProcessed,
 				benchMarkingSpecs.getJobStartTime(), "Started");
 
