@@ -1,4 +1,4 @@
-# Amazon Managed Service for Apache Flink – Benchmarking Utility
+# Amazon Kinesis Data Analytics for Apache Flink – Benchmarking Utility
 
 --------
 
