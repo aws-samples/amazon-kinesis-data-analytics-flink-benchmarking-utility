@@ -1,4 +1,10 @@
-# Amazon Kinesis Data Analytics Flink – Benchmarking Utility
+# Amazon Managed Service for Apache Flink (formerly Amazon Kinesis Data Analytics) – Benchmarking Utility
+
+--------
+
+>  #### 🚨 August 30, 2023: Amazon Kinesis Data Analytics has been renamed to [Amazon Managed Service for Apache Flink](https://aws.amazon.com/managed-service-apache-flink).
+
+--------
 
 Amazon Kinesis Data Analytics Flink Benchmarking Utility helps with capacity planning, integration testing, and benchmarking of [Kinesis Data Analytics for Apache Flink](https://docs.aws.amazon.com/kinesisanalytics/latest/java/what-is.html) applications. Using this utility, you can generate sample data and write it to one or more Kinesis Data Streams based on the requirements of your Flink applications. This utility is used in conjunction with a Flink Application with Kinesis Data Stream as a source and one of the supported [Sinks](https://docs.aws.amazon.com/kinesisanalytics/latest/java/how-sinks.html) for e.g. Amazon S3.
 
